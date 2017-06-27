@@ -1,5 +1,7 @@
 # models
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ausgaben/models.svg)](https://greenkeeper.io/)
+
 [![npm version](https://img.shields.io/npm/v/@ausgaben/models.svg)](https://www.npmjs.com/package/@ausgaben/models)
 [![Build Status](https://travis-ci.org/ausgaben/models.svg?branch=master)](https://travis-ci.org/ausgaben/models)
 [![monitored by greenkeeper.io](https://img.shields.io/badge/greenkeeper.io-monitored-brightgreen.svg)](http://greenkeeper.io/) 
