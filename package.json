@@ -1,0 +1,59 @@
+{
+  "name": "@ausgaben/models",
+  "description": "A collection of models",
+  "version": "0.0.0-development",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "NODE_ENV=testing mocha --compilers js:babel-register --reporter=dot --timeout=1350 test/\\*\\*/\\*.js",
+    "test:coverage": "NODE_ENV=nyc babel src --out-dir instrumented-src > /dev/null && nyc --reporter=text-summary --reporter=lcov npm run test",
+    "test:coverage-travis": "npm run test:coverage && codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage",
+    "lint": "standard",
+    "precommit": "npm run lint && npm test",
+    "commitmsg": "validate-commit-msg",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ausgaben/models.git"
+  },
+  "author": "Markus Tacker <m@coderbyheart.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ausgaben/models/issues"
+  },
+  "homepage": "https://github.com/ausgaben/models#readme",
+  "peerDependencies": {
+    "@rheactorjs/errors": "1.x",
+    "@rheactorjs/models": "1.x",
+    "@rheactorjs/value-objects": "1.x",
+    "tcomb": "^3.2.16"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.4.1",
+    "husky": "^0.13.2",
+    "istanbul": "^0.4.4",
+    "jsonwebtoken": "^7.3.0",
+    "mocha": "^3.1.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^10.1.2",
+    "semantic-release": "^6.3.2",
+    "standard": "^10.0.2",
+    "validate-commit-msg": "^2.11.2"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=6.10.2"
+  }
+}
