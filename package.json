@@ -25,7 +25,7 @@
     "url": "https://github.com/ausgaben/models/issues"
   },
   "homepage": "https://github.com/ausgaben/models#readme",
-  "peerDependencies": {
+  "dependencies": {
     "@rheactorjs/errors": "1.x",
     "@rheactorjs/models": "1.x",
     "@rheactorjs/value-objects": "1.x",
