@@ -24,7 +24,7 @@
   "homepage": "https://github.com/ausgaben/models#readme",
   "dependencies": {
     "@rheactorjs/errors": "1.x",
-    "@rheactorjs/models": "1.x",
+    "@rheactorjs/models": "^2.0.1",
     "@rheactorjs/value-objects": "1.x",
     "tcomb": "^3.2.16"
   },
@@ -35,7 +35,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.23.0",
     "husky": "^0.14.1",
-    "semantic-release": "^6.3.6",
+    "semantic-release": "^8.0.3",
     "standard": "^10.0.2",
     "validate-commit-msg": "^2.11.2"
   },
