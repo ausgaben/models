@@ -5,11 +5,13 @@ cache:
 notifications:
   email: false
 before_install:
-  - npm install -g npm-install-peers
+  - npm install -g npm@5
+  - npm install -g greenkeeper-lockfile@1
 install:
   - npm install
   - npm prune
-  - npm-install-peers
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 script:
   - npm run lint
   - make dist
