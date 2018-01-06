@@ -24,7 +24,7 @@
   "homepage": "https://github.com/ausgaben/models#readme",
   "dependencies": {
     "@rheactorjs/errors": "1.x",
-    "@rheactorjs/models": "^2.0.1",
+    "@rheactorjs/models": "^3.0.0",
     "@rheactorjs/value-objects": "1.x",
     "tcomb": "^3.2.16"
   },
