@@ -6,22 +6,19 @@ const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptySt
 
 /**
  * @param {string} title
- * @param {string} category
  * @constructor
  */
 export class Title extends Model {
-  constructor (title, category) {
+  constructor (title) {
     super({$context})
     this.title = NonEmptyStringType(title, ['Title', 'title:String'])
-    this.category = NonEmptyStringType(category, ['Title', 'category:String'])
   }
 
   toJSON () {
     return Object.assign(
       super.toJSON(),
       {
-        title: this.title,
-        category: this.category
+        title: this.title
       }
     )
   }
@@ -30,7 +27,6 @@ export class Title extends Model {
     TitleJSONType(data)
     return new Title(Object.assign(
       super.fromJSON(data), {
-        category: data.category,
         title: data.title
       })
     )
@@ -52,7 +48,6 @@ export class Title extends Model {
 }
 
 export const TitleJSONType = struct({
-  title: NonEmptyStringType,
-  category: NonEmptyStringType
+  title: NonEmptyStringType
 }, 'TitleJSONType')
 export const TitleType = irreducible('TitleType', Title.is)
