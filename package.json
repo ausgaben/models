@@ -6,8 +6,7 @@
   "scripts": {
     "lint": "standard",
     "precommit": "npm run lint && npm test",
-    "commitmsg": "validate-commit-msg",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "commitmsg": "validate-commit-msg"
   },
   "publishConfig": {
     "access": "public"
