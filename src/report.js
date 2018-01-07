@@ -40,16 +40,6 @@ export class Report extends Model {
       checkingAccount: Reference.fromJSON(data.checkingAccount)
     })
   }
-
-  /**
-   * Returns true if x is of type Report
-   *
-   * @param {object} x
-   * @returns {boolean}
-   */
-  static is (x) {
-    return (x instanceof Report) || ('$context' in x && URIValue.is(x.$context) && $context.equals(x.$context))
-  }
 }
 
 export const ReportJSONType = struct({
@@ -59,4 +49,4 @@ export const ReportJSONType = struct({
   savings: IntegerType,
   checkingAccount: ReferenceJSONType
 }, 'ReportJSONType')
-export const ReportType = irreducible('ReportType', Report.is)
+export const ReportType = irreducible('ReportType', x => x instanceof Report)

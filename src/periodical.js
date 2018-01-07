@@ -1,4 +1,4 @@
-import {Aggregate, VersionNumberType} from '@rheactorjs/models'
+import {ImmutableAggregate, VersionNumberType} from '@rheactorjs/models'
 import {URIValue} from '@rheactorjs/value-objects'
 import {
   Boolean as BooleanType,
@@ -17,7 +17,7 @@ const MaybeDateType = maybe(DateType)
 
 const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wiki/JsonLD#Periodical')
 
-export class Periodical extends Aggregate {
+export class Periodical extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
     const {
@@ -109,16 +109,6 @@ export class Periodical extends Aggregate {
       })
     )
   }
-
-  /**
-   * Returns true if x is of type Periodical
-   *
-   * @param {object} x
-   * @returns {boolean}
-   */
-  static is (x) {
-    return (x instanceof Periodical) || (Aggregate.is(x) && '$context' in x && URIValue.is(x.$context) && $context.equals(x.$context))
-  }
 }
 
 export const PeriodicalJSONType = struct({
@@ -147,4 +137,4 @@ export const PeriodicalJSONType = struct({
   enabledIn11: BooleanType,
   enabledIn12: BooleanType
 }, 'PeriodicalJSONType')
-export const PeriodicalType = irreducible('PeriodicalType', Periodical.is)
+export const PeriodicalType = irreducible('PeriodicalType', x => x instanceof Periodical)

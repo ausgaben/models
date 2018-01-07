@@ -23,19 +23,19 @@
   },
   "homepage": "https://github.com/ausgaben/models#readme",
   "dependencies": {
-    "@rheactorjs/errors": "1.x",
-    "@rheactorjs/models": "^2.0.1",
-    "@rheactorjs/value-objects": "1.x",
-    "tcomb": "^3.2.16"
+    "@rheactorjs/errors": "^1.0.2",
+    "@rheactorjs/models": "^3.0.0",
+    "@rheactorjs/value-objects": "^1.0.4",
+    "tcomb": "^3.2.24"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-env": "^1.2.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.22.0",
-    "babel-register": "^6.23.0",
-    "husky": "^0.14.1",
-    "semantic-release": "^8.0.3",
+    "babel-register": "^6.26.0",
+    "husky": "^0.14.3",
+    "semantic-release": "^11.0.2",
     "standard": "^10.0.2",
     "validate-commit-msg": "^2.11.2"
   },

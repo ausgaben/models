@@ -1,4 +1,4 @@
-import {Aggregate, VersionNumberType} from '@rheactorjs/models'
+import {ImmutableAggregate, VersionNumberType} from '@rheactorjs/models'
 import {URIValue} from '@rheactorjs/value-objects'
 import {Boolean as BooleanType, String as StringType, refinement, struct, maybe, irreducible} from 'tcomb'
 const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptyStringType')
@@ -7,11 +7,11 @@ const MaybeStringType = maybe(StringType)
 
 const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wiki/JsonLD#CheckingAccount')
 
-export class CheckingAccount extends Aggregate {
+export class CheckingAccount extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
     const {identifier, name, monthly, savings} = fields
-    this.identifier = NonEmptyStringType(identifier, ['CheckingAccount', 'identifier:AggregateId'])
+    this.identifier = NonEmptyStringType(identifier, ['CheckingAccount', 'identifier:ImmutableAggregateId'])
     this.name = NonEmptyStringType(name, ['CheckingAccount', 'name:String'])
     this.monthly = BooleanType(monthly, ['CheckingAccount', 'monthly:Boolean'])
     this.savings = BooleanType(savings, ['CheckingAccount', 'monthly:savings'])
@@ -47,16 +47,6 @@ export class CheckingAccount extends Aggregate {
   static get $context () {
     return $context
   }
-
-  /**
-   * Returns true if x is of type CheckingAccount
-   *
-   * @param {object} x
-   * @returns {boolean}
-   */
-  static is (x) {
-    return (x instanceof CheckingAccount) || (Aggregate.is(x) && '$context' in x && URIValue.is(x.$context) && $context.equals(x.$context))
-  }
 }
 
 export const CheckingAccountJSONType = struct({
@@ -71,4 +61,4 @@ export const CheckingAccountJSONType = struct({
   monthly: BooleanType,
   savings: BooleanType
 }, 'CheckingAccountJSONType')
-export const CheckingAccountType = irreducible('CheckingAccountType', CheckingAccount.is)
+export const CheckingAccountType = irreducible('CheckingAccountType', x => x instanceof CheckingAccount)

@@ -1,4 +1,4 @@
-import {Aggregate, VersionNumberType} from '@rheactorjs/models'
+import {ImmutableAggregate, VersionNumberType} from '@rheactorjs/models'
 import {URIValue} from '@rheactorjs/value-objects'
 import {
   Boolean as BooleanType,
@@ -17,7 +17,7 @@ const MaybeDateType = maybe(DateType)
 
 const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wiki/JsonLD#Spending')
 
-export class Spending extends Aggregate {
+export class Spending extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
     const {category, title, amount, booked, saving, bookedAt} = fields
@@ -60,16 +60,6 @@ export class Spending extends Aggregate {
       })
     )
   }
-
-  /**
-   * Returns true if x is of type Spending
-   *
-   * @param {object} x
-   * @returns {boolean}
-   */
-  static is (x) {
-    return (x instanceof Spending) || (Aggregate.is(x) && '$context' in x && URIValue.is(x.$context) && $context.equals(x.$context))
-  }
 }
 
 export const SpendingJSONType = struct({
@@ -86,4 +76,4 @@ export const SpendingJSONType = struct({
   saving: BooleanType,
   amount: IntegerType
 }, 'SpendingJSONType')
-export const SpendingType = irreducible('SpendingType', Spending.is)
+export const SpendingType = irreducible('SpendingType', x => x instanceof Spending)
