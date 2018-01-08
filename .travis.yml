@@ -15,7 +15,7 @@ script:
   - npm run lint
   - make dist
 after_success:
-  - npx run semantic-release
+  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
