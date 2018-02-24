@@ -10,9 +10,10 @@ const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wik
 export class CheckingAccount extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
-    const {identifier, name, monthly, savings} = fields
+    const {identifier, name, currency, monthly, savings} = fields
     this.identifier = NonEmptyStringType(identifier, ['CheckingAccount', 'identifier:ImmutableAggregateId'])
     this.name = NonEmptyStringType(name, ['CheckingAccount', 'name:String'])
+    this.currency = NonEmptyStringType(currency, ['CheckingAccount', 'currency:String'])
     this.monthly = BooleanType(monthly, ['CheckingAccount', 'monthly:Boolean'])
     this.savings = BooleanType(savings, ['CheckingAccount', 'monthly:savings'])
   }
@@ -23,6 +24,7 @@ export class CheckingAccount extends ImmutableAggregate {
       {
         identifier: this.identifier,
         name: this.name,
+        currency: this.currency,
         monthly: this.monthly,
         savings: this.savings
       }
@@ -35,6 +37,7 @@ export class CheckingAccount extends ImmutableAggregate {
       super.fromJSON(data), {
         identifier: data.identifier,
         name: data.name,
+        currency: data.currency,
         monthly: data.monthly,
         savings: data.savings
       })
@@ -58,6 +61,7 @@ export const CheckingAccountJSONType = struct({
   $deletedAt: MaybeStringType,
   identifier: NonEmptyStringType,
   name: NonEmptyStringType,
+  currency: NonEmptyStringType,
   monthly: BooleanType,
   savings: BooleanType
 }, 'CheckingAccountJSONType')
