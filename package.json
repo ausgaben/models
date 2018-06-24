@@ -25,7 +25,7 @@
   "dependencies": {
     "@rheactorjs/errors": "^1.0.2",
     "@rheactorjs/models": "^3.0.1",
-    "@rheactorjs/value-objects": "^1.0.4",
+    "@rheactorjs/value-objects": "^10.1.0",
     "tcomb": "^3.2.27"
   },
   "devDependencies": {
