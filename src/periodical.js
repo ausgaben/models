@@ -21,7 +21,7 @@ export class Periodical extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
     const {
-      category, title, amount, startsAt, estimate, enabledIn01,
+      category, title, amount, saving, startsAt, estimate, enabledIn01,
       enabledIn02,
       enabledIn03,
       enabledIn04,
@@ -37,6 +37,7 @@ export class Periodical extends ImmutableAggregate {
     this.category = NonEmptyStringType(category, ['Periodical', 'category:String'])
     this.title = NonEmptyStringType(title, ['Periodical', 'title:String'])
     this.amount = IntegerType(amount, ['Periodical', 'amount:Integer'])
+    this.saving = BooleanType(saving || false, ['Periodical', 'saving:Boolean'])
     this.estimate = BooleanType(estimate || false, ['Periodical', 'estimate:Boolean'])
     this.startsAt = MaybeDateType(startsAt, ['Spending', 'startsAt:?Date'])
     this.enabledIn01 = BooleanType(enabledIn01 || false, ['Periodical', 'enabledIn01:Boolean'])
@@ -64,6 +65,7 @@ export class Periodical extends ImmutableAggregate {
         category: this.category,
         title: this.title,
         amount: this.amount,
+        saving: this.saving,
         estimate: this.estimate,
         startsAt: this.startsAt ? this.startsAt.toISOString() : undefined,
         enabledIn01: this.enabledIn01,
@@ -89,6 +91,7 @@ export class Periodical extends ImmutableAggregate {
         category: data.category,
         title: data.title,
         amount: data.amount,
+        saving: data.saving,
         estimate: data.estimate,
         startsAt: data.startsAt ? new Date(data.startsAt) : undefined,
         enabledIn01: data.enabledIn01,
@@ -117,6 +120,7 @@ export const PeriodicalJSONType = struct({
   $deletedAt: MaybeStringType,
   category: NonEmptyStringType,
   title: NonEmptyStringType,
+  saving: BooleanType,
   amount: IntegerType,
   startsAt: MaybeDateType,
   estimate: BooleanType,

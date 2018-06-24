@@ -20,12 +20,13 @@ const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wik
 export class Spending extends ImmutableAggregate {
   constructor (fields) {
     super(Object.assign(fields, {$context}))
-    const {category, title, amount, booked, bookedAt} = fields
+    const {category, title, amount, booked, saving, bookedAt} = fields
     this.category = NonEmptyStringType(category, ['Spending', 'category:String'])
     this.title = NonEmptyStringType(title, ['Spending', 'title:String'])
     this.amount = IntegerType(amount, ['Spending', 'amount:Integer'])
     this.booked = BooleanType(booked || false, ['Spending', 'booked:Boolean'])
     this.bookedAt = MaybeDateType(bookedAt, ['Spending', 'bookedAt:?Date'])
+    this.saving = BooleanType(saving || false, ['Spending', 'saving:Boolean'])
   }
 
   static get $context () {
@@ -40,7 +41,8 @@ export class Spending extends ImmutableAggregate {
         title: this.title,
         amount: this.amount,
         booked: this.booked,
-        bookedAt: this.bookedAt ? this.bookedAt.toISOString() : undefined
+        bookedAt: this.bookedAt ? this.bookedAt.toISOString() : undefined,
+        saving: this.saving
       }
     )
   }
@@ -53,7 +55,8 @@ export class Spending extends ImmutableAggregate {
         title: data.title,
         amount: data.amount,
         booked: data.booked,
-        bookedAt: data.bookedAt ? new Date(data.bookedAt) : undefined
+        bookedAt: data.bookedAt ? new Date(data.bookedAt) : undefined,
+        saving: data.saving
       })
     )
   }
@@ -70,6 +73,7 @@ export const SpendingJSONType = struct({
   title: NonEmptyStringType,
   booked: BooleanType,
   bookedAt: MaybeDateType,
+  saving: BooleanType,
   amount: IntegerType
 }, 'SpendingJSONType')
 export const SpendingType = irreducible('SpendingType', x => x instanceof Spending)
