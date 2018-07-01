@@ -1,4 +1,4 @@
-import {ImmutableAggregate, VersionNumberType} from '@rheactorjs/models'
+import {ImmutableAggregate, VersionNumberType, IDJSONType} from '@rheactorjs/models'
 import {URIValue} from '@rheactorjs/value-objects'
 import {
   Boolean as BooleanType,
@@ -112,7 +112,7 @@ export class Periodical extends ImmutableAggregate {
 }
 
 export const PeriodicalJSONType = struct({
-  $id: StringType,
+  $id: IDJSONType,
   $version: VersionNumberType,
   $deleted: MaybeBooleanType,
   $createdAt: StringType,

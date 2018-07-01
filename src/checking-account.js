@@ -1,4 +1,4 @@
-import {ImmutableAggregate, VersionNumberType} from '@rheactorjs/models'
+import {ImmutableAggregate, VersionNumberType, IDJSONType} from '@rheactorjs/models'
 import {URIValue} from '@rheactorjs/value-objects'
 import {Boolean as BooleanType, String as StringType, refinement, struct, maybe, irreducible} from 'tcomb'
 const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptyStringType')
@@ -53,7 +53,7 @@ export class CheckingAccount extends ImmutableAggregate {
 }
 
 export const CheckingAccountJSONType = struct({
-  $id: StringType,
+  $id: IDJSONType,
   $version: VersionNumberType,
   $deleted: MaybeBooleanType,
   $createdAt: StringType,
