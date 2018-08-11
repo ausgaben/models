@@ -5,7 +5,8 @@ cache:
 notifications:
   email: false
 before_install:
-  - npm install -g greenkeeper-lockfile@1
+  - npm install -g semantic-release
+  - npm install -g greenkeeper-lockfile@2
 install:
   - npm install
   - npm prune
@@ -15,7 +16,7 @@ script:
   - npm run lint
   - make dist
 after_success:
-  - npm run semantic-release
+  - npx semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
