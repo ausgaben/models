@@ -122,7 +122,7 @@ export const PeriodicalJSONType = struct({
   title: NonEmptyStringType,
   saving: BooleanType,
   amount: IntegerType,
-  startsAt: MaybeDateType,
+  startsAt: MaybeStringType,
   estimate: BooleanType,
   enabledIn01: BooleanType,
   enabledIn02: BooleanType,

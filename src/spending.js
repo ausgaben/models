@@ -72,7 +72,7 @@ export const SpendingJSONType = struct({
   category: NonEmptyStringType,
   title: NonEmptyStringType,
   booked: BooleanType,
-  bookedAt: MaybeDateType,
+  bookedAt: MaybeStringType,
   saving: BooleanType,
   amount: IntegerType
 }, 'SpendingJSONType')
