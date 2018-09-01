@@ -1,5 +1,5 @@
-import {ImmutableAggregate, VersionNumberType, IDJSONType} from '@rheactorjs/models'
-import {URIValue} from '@rheactorjs/value-objects'
+import { ImmutableAggregate, VersionNumberType, IDJSONType } from '@rheactorjs/models'
+import { URIValue } from '@rheactorjs/value-objects'
 import {
   Boolean as BooleanType,
   String as StringType,
@@ -19,8 +19,8 @@ const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wik
 
 export class Spending extends ImmutableAggregate {
   constructor (fields) {
-    super(Object.assign(fields, {$context}))
-    const {category, title, amount, booked, saving, bookedAt} = fields
+    super(Object.assign(fields, { $context }))
+    const { category, title, amount, booked, saving, bookedAt } = fields
     this.category = NonEmptyStringType(category, ['Spending', 'category:String'])
     this.title = NonEmptyStringType(title, ['Spending', 'title:String'])
     this.amount = IntegerType(amount, ['Spending', 'amount:Integer'])

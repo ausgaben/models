@@ -1,7 +1,7 @@
 import { URIValue } from '@rheactorjs/value-objects'
 import { String as StringType, refinement, struct, irreducible } from 'tcomb'
 
-const {Model} = require('@rheactorjs/models')
+const { Model } = require('@rheactorjs/models')
 const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wiki/JsonLD#Title')
 const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptyStringType')
 
@@ -11,7 +11,7 @@ const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptySt
  */
 export class Title extends Model {
   constructor (title) {
-    super({$context})
+    super({ $context })
     this.title = NonEmptyStringType(title, ['Title', 'title:String'])
   }
 

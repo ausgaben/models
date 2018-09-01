@@ -6,8 +6,8 @@ const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wik
 
 export class Report extends Model {
   constructor (fields) {
-    super({$context})
-    const {balance, income, spendings, savings, checkingAccount} = fields
+    super({ $context })
+    const { balance, income, spendings, savings, checkingAccount } = fields
     this.balance = IntegerType(balance, ['Report', 'balance:Integer'])
     this.income = IntegerType(income, ['Report', 'income:Integer'])
     this.spendings = IntegerType(spendings, ['Report', 'spendings:Integer'])

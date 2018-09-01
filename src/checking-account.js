@@ -1,6 +1,6 @@
-import {ImmutableAggregate, VersionNumberType, IDJSONType} from '@rheactorjs/models'
-import {URIValue} from '@rheactorjs/value-objects'
-import {Boolean as BooleanType, String as StringType, refinement, struct, maybe, irreducible} from 'tcomb'
+import { ImmutableAggregate, VersionNumberType, IDJSONType } from '@rheactorjs/models'
+import { URIValue } from '@rheactorjs/value-objects'
+import { Boolean as BooleanType, String as StringType, refinement, struct, maybe, irreducible } from 'tcomb'
 const NonEmptyStringType = refinement(StringType, s => s.length > 0, 'NonEmptyStringType')
 const MaybeBooleanType = maybe(BooleanType)
 const MaybeStringType = maybe(StringType)
@@ -9,8 +9,8 @@ const $context = new URIValue('https://github.com/ausgaben/ausgaben-rheactor/wik
 
 export class CheckingAccount extends ImmutableAggregate {
   constructor (fields) {
-    super(Object.assign(fields, {$context}))
-    const {identifier, name, currency, monthly, savings} = fields
+    super(Object.assign(fields, { $context }))
+    const { identifier, name, currency, monthly, savings } = fields
     this.identifier = NonEmptyStringType(identifier, ['CheckingAccount', 'identifier:ImmutableAggregateId'])
     this.name = NonEmptyStringType(name, ['CheckingAccount', 'name:String'])
     this.currency = NonEmptyStringType(currency, ['CheckingAccount', 'currency:String'])
